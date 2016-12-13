@@ -2,3 +2,5 @@
 *.cmake
 */CMakeFiles/*
 Makefile
+.idea\*
+.vs\*
