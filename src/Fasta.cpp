@@ -16,6 +16,18 @@ Fasta::Fasta(const std::string &header, const std::string &sequence, const DBTyp
     this->Extension_type = extension_type;
 }
 
+Fasta::Fasta(const std::string &header, const char *sequence, const DBType db_type,
+             const ExtType extension_type) : Sequence(header, sequence) {
+    this->DB_type = db_type;
+    this->Extension_type = extension_type;
+}
+
+Fasta::Fasta(const std::string &header, const char sequence, const DBType db_type,
+             const ExtType extension_type) : Sequence(header, sequence) {
+    this->DB_type = db_type;
+    this->Extension_type = extension_type;
+}
+
 Fasta::Fasta(const Sequence &seq, const DBType db_type, const ExtType extension_type)
         : Sequence(seq) {
     this->DB_type = db_type;
@@ -144,80 +156,65 @@ bool Fasta::charCheck() {
 */
 
 Fasta Fasta::operator+ (const Fasta& rhs) {
-    this->append(rhs);
+    Fasta new_fasta(*this);
+    new_fasta += rhs;
 
-    return *this;
+    return new_fasta;
 }
 
 Fasta Fasta::operator+ (const Sequence& rhs) {
-    this->append(rhs);
+    Fasta new_fasta(*this);
+    new_fasta += rhs;
 
-    return *this;
+    return new_fasta;
 }
 
 Fasta Fasta::operator+ (const std::string& rhs) {
-    this->append(rhs);
+    Fasta new_fasta(*this);
+    new_fasta += rhs;
 
-    return *this;
+    return new_fasta;
 }
 
 Fasta Fasta::operator+ (const char* rhs) {
-    this->append(rhs);
+    Fasta new_fasta(*this);
+    new_fasta += rhs;
 
-    return *this;
+    return new_fasta;
 }
 
 Fasta Fasta::operator+ (const char rhs) {
-    this->append(rhs);
+    Fasta new_fasta(*this);
+    new_fasta += rhs;
 
-    return *this;
+    return new_fasta;
 }
 
 
 Fasta operator+ (const Sequence& lhs, const Fasta& rhs) {
-    Fasta new_fasta = Fasta(rhs);
+    Fasta new_fasta(lhs);
+    new_fasta += rhs;
 
-    return new_fasta + lhs;
+    return new_fasta;
 }
 
 Fasta operator+ (const std::string& lhs, const Fasta& rhs) {
-    Fasta new_fasta = Fasta(rhs);
+    Fasta new_fasta(rhs.getHeader(), lhs);
+    new_fasta += rhs;
 
-    return new_fasta + lhs;
+    return new_fasta;
 }
 
 Fasta operator+ (const char* lhs, const Fasta& rhs) {
-    Fasta new_fasta = Fasta(rhs);
+    Fasta new_fasta(rhs.getHeader(), lhs);
+    new_fasta += rhs;
 
-    return new_fasta + lhs;
+    return new_fasta;
 }
 
 Fasta operator+ (const char lhs, const Fasta& rhs) {
-    Fasta new_fasta = Fasta(rhs);
+    Fasta new_fasta(rhs.getHeader(), lhs);
+    new_fasta += rhs;
 
-    return new_fasta + lhs;
+    return new_fasta;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

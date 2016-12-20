@@ -1,8 +1,8 @@
 *.a
 *.cmake
-*/CMakeFiles/*
+*CMakeCache.txt
+*CMakeFiles*
 Makefile
-.idea\*
-.vs\*
 .idea/*
 .vs/*
+Testing/

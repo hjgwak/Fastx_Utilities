@@ -144,75 +144,50 @@ Sequence &Sequence::operator+=(const Sequence &sequence) {
 }
 
 Sequence Sequence::operator+ (const Sequence& rhs) {
-    this->append(rhs);
+    Sequence new_seq(*this);
+    new_seq += rhs;
 
-    return *this;
+    return new_seq;
 }
 
 Sequence Sequence::operator+ (const std::string& rhs) {
-    this->append(rhs);
+    Sequence new_seq(*this);
+    new_seq += rhs;
 
-    return *this;
+    return new_seq;
 }
 
 Sequence Sequence::operator+ (const char* rhs) {
-    this->append(rhs);
+    Sequence new_seq(*this);
+    new_seq += rhs;
 
-    return *this;
+    return new_seq;
 }
 
 Sequence Sequence::operator+ (const char rhs) {
-    this->append(rhs);
+    Sequence new_seq(*this);
+    new_seq += rhs;
 
-    return *this;
+    return new_seq;
 }
 
 Sequence operator+ (const std::string& lhs, const Sequence& rhs) {
-    Sequence new_seq = Sequence(rhs.getHeader(), lhs);
+    Sequence new_seq(rhs.getHeader(), lhs);
+    new_seq += rhs;
 
-    return new_seq + rhs;
+    return new_seq;
 }
 
 Sequence operator+ (const char* lhs, const Sequence& rhs) {
-    Sequence new_seq = Sequence(rhs.getHeader(), lhs);
+    Sequence new_seq(rhs.getHeader(), lhs);
+    new_seq += rhs;
 
-    return new_seq + rhs;
+    return new_seq;
 }
 
 Sequence operator+ (const char lhs, const Sequence& rhs) {
     Sequence new_seq(rhs.getHeader(), lhs);
+    new_seq += rhs;
 
-    return new_seq + rhs;
+    return new_seq;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

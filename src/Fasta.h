@@ -22,6 +22,10 @@ public:
     Fasta();
     Fasta(const std::string& header, const std::string& sequence,
           const DBType db_type = DBType::none, const ExtType extension_type = ExtType::none);
+    Fasta(const std::string& header, const char* sequence,
+          const DBType db_type = DBType::none, const ExtType extension_type = ExtType::none);
+    Fasta(const std::string& header, const char sequence,
+          const DBType db_type = DBType::none, const ExtType extension_type = ExtType::none);
     Fasta(const Sequence& seq, const DBType db_type = DBType::none, const ExtType extension_type = ExtType::none);
     Fasta(const Fasta& fasta);
 
