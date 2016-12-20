@@ -143,25 +143,25 @@ Sequence &Sequence::operator+=(const Sequence &sequence) {
     return *this;
 }
 
-Sequence &Sequence::operator+ (const Sequence& rhs) {
+Sequence Sequence::operator+ (const Sequence& rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Sequence &Sequence::operator+ (const std::string& rhs) {
+Sequence Sequence::operator+ (const std::string& rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Sequence &Sequence::operator+ (const char* rhs) {
+Sequence Sequence::operator+ (const char* rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Sequence &Sequence::operator+ (const char rhs) {
+Sequence Sequence::operator+ (const char rhs) {
     this->append(rhs);
 
     return *this;
