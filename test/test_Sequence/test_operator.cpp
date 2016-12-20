@@ -7,8 +7,18 @@
 
 using namespace std;
 
-bool verifySequence(Sequence& obj, string header, string seq) {
+bool verifySequence(const Sequence& obj, const string& header, const string& seq) {
     return (obj.getHeader() == header && obj.seq() == seq);
+}
+
+void checkAnswer(const Sequence& obj, const string& header, const string& seq,
+	const string& msg, int* ret) {
+	if (!verifySequence(obj, header, seq)) {
+		cerr << msg << endl;
+		cerr << "       result : header=" + obj.getHeader() + ", seq=" + obj.seq() << endl;
+		cerr << "       answer : header=" + header + ", seq=" + seq << endl;
+		ret -= 1;
+	}
 }
 
 int main() {
@@ -67,20 +77,16 @@ int main() {
      * result : header="", seq="AGTCTCGAAACGTACGT"
      */
     Sequence seq3 = seq + seq2;
-    if (!verifySequence(seq3, "", "AGTCTCGAAACGTACGT")) {
-        cerr << "[FAIL] operator+ (const Sequence&, const Sequence&)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq3, "", "AGTCTCGAAACGTACGT",
+		"[FAIL] operator+ (const Sequence&, const Sequence&)", &ret);
 
     /*
      * seq2 + string "TAGC"
      * result : header="adder", seq="ACGTTAGC"
      */
     Sequence seq4 = seq2 + "TAGC";
-    if (!verifySequence(seq4, "adder", "ACGTTAGC")) {
-        cerr << "[FAIL] operator+ (const Sequence&, const std::string&)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq4, "adder", "ACGTTAGC",
+		"[FAIL] operator+ (const Sequence&, const std::string&)", &ret);
 
     /*
      * seq4 + character array "ATGC"
@@ -88,50 +94,40 @@ int main() {
      */
     char tmp2[5] = "ATGC";
     Sequence seq5 = seq4 + tmp2;
-    if (!verifySequence(seq5, "adder", "ACGTTAGCATGC")) {
-        cerr << "[FAIL] operator+ (const Sequence&, const char *)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq5, "adder", "ACGTTAGCATGC",
+		"[FAIL] operator+ (const Sequence&, const char *)", &ret);
 
     /*
      * seq5 + chracter 'C'
      * result : header="adder", seq="ACGTTAGCATGCC"
      */
     Sequence seq6 = seq5 + 'C';
-    if (!verifySequence(seq6, "adder", "ACGTTAGCATGCC")) {
-        cerr << "[FAIL] operator+ (const Sequence&, const char)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq6, "adder", "ACGTTAGCATGCC",
+		"[FAIL] operator+ (const Sequence&, const char)", &ret);
 
     /*
      * string "TAGC" + seq2
      * result : header="adder", seq="TAGCACGT"
      */
     Sequence seq7 = "TAGC" + seq2;
-    if (!verifySequence(seq7, "adder", "TAGCACGT")) {
-        cerr << "[FAIL] operator+ (const std::string&, const Sequence&)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq7, "adder", "TAGCACGT", 
+		"[FAIL] operator+ (const std::string&, const Sequence&)", &ret);
 
     /*
      * character array "ATGC" + seq7
      * result : header="adder", "ATGCTAGCACGT"
      */
     Sequence seq8 = tmp2 + seq7;
-    if (!verifySequence(seq8, "adder", "ATGCTAGCACGT")) {
-        cerr << "[FAIL] operator+ (const char *, const Sequence&)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq8, "adder", "ATGCTAGCACGT",
+		"[FAIL] operator+ (const char *, const Sequence&)", &ret);
 
     /*
      * cheacter 'A' + seq8
      * result : header="adder", "AATGCTAGCACGT"
      */
     Sequence seq9 = 'A' + seq8;
-    if (!verifySequence(seq9, "adder", "AATGCTAGCACGT")) {
-        cerr << "[FAIL] operator+ (const char, const Sequence&)" << endl;
-        ret = -1;
-    }
+	checkAnswer(seq9, "adder", "AATGCTAGCACGT",
+		"[FAIL] operator+ (const char, const Sequence&)", &ret);
 
     return ret;
 }
