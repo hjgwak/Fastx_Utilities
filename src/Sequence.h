@@ -12,6 +12,8 @@ public:
     // Constructors
     Sequence();
     Sequence(const std::string& header, const std::string& sequence);
+	Sequence(const std::string& header, const char* sequence);
+	Sequence(const std::string& header, const char ch);
     Sequence(const Sequence& seq);
 
     virtual Sequence& operator=(const std::string& sequence);

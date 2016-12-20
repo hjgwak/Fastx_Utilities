@@ -15,6 +15,16 @@ Sequence::Sequence(const std::string &header, const std::string &sequence) {
     this->sequence = sequence;
 }
 
+Sequence::Sequence(const std::string& header, const char* sequence) {
+	this->header = header;
+	this->sequence = sequence;
+}
+
+Sequence::Sequence(const std::string& header, const char ch) {
+	this->header = header;
+	this->sequence = ch;
+}
+
 Sequence::Sequence(const Sequence &seq) {
     this->header = seq.header;
     this->sequence = seq.sequence;
@@ -158,21 +168,21 @@ Sequence &Sequence::operator+ (const char rhs) {
 }
 
 Sequence operator+ (const std::string& lhs, const Sequence& rhs) {
-    Sequence new_seq = Sequence(rhs);
+    Sequence new_seq = Sequence(rhs.getHeader(), lhs);
 
-    return new_seq + lhs;
+    return new_seq + rhs;
 }
 
 Sequence operator+ (const char* lhs, const Sequence& rhs) {
-    Sequence new_seq = Sequence(rhs);
+    Sequence new_seq = Sequence(rhs.getHeader(), lhs);
 
-    return new_seq + lhs;
+    return new_seq + rhs;
 }
 
 Sequence operator+ (const char lhs, const Sequence& rhs) {
-    Sequence new_seq(rhs);
+    Sequence new_seq(rhs.getHeader(), lhs);
 
-    return new_seq + lhs;
+    return new_seq + rhs;
 }
 
 
