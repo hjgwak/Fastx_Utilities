@@ -143,31 +143,31 @@ bool Fasta::charCheck() {
 }
 */
 
-Fasta &Fasta::operator+ (const Fasta& rhs) {
+Fasta Fasta::operator+ (const Fasta& rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Fasta &Fasta::operator+ (const Sequence& rhs) {
+Fasta Fasta::operator+ (const Sequence& rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Fasta &Fasta::operator+ (const std::string& rhs) {
+Fasta Fasta::operator+ (const std::string& rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Fasta &Fasta::operator+ (const char* rhs) {
+Fasta Fasta::operator+ (const char* rhs) {
     this->append(rhs);
 
     return *this;
 }
 
-Fasta &Fasta::operator+ (const char rhs) {
+Fasta Fasta::operator+ (const char rhs) {
     this->append(rhs);
 
     return *this;
