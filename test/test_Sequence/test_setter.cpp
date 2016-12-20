@@ -23,7 +23,7 @@ int main() {
      * result : header="test", seq=""
      */
     seq.setHeader("test");
-    if (not verifySequence(seq, "test", "")) {
+    if (!verifySequence(seq, "test", "")) {
         cerr << "[FAIL] setHeader(const std::string&)" << endl;
         ret = -1;
     }
@@ -33,7 +33,7 @@ int main() {
      * result : header="test", seq="AGTC"
      */
     seq.append("AGTC");
-    if (not verifySequence(seq, "test", "AGTC")) {
+    if (!verifySequence(seq, "test", "AGTC")) {
         cerr << "[FAIL] append(const std::string&)" << endl;
         ret = -1;
     }
@@ -44,7 +44,7 @@ int main() {
      */
     char tmp1[5] = "TCGA";
     seq.append(tmp1);
-    if (not verifySequence(seq, "test", "AGTCTCGA")) {
+    if (!verifySequence(seq, "test", "AGTCTCGA")) {
         cerr << "[FAIL] append(const char*)" << endl;
         ret = -1;
     }
@@ -55,7 +55,7 @@ int main() {
      */
     char ch = 'A';
     seq.append(ch);
-    if (not verifySequence(seq, "test", "AGTCTCGAA")) {
+    if (!verifySequence(seq, "test", "AGTCTCGAA")) {
         cerr << "[FAIL] append(const char)" << endl;
         ret = -1;
     }
@@ -66,7 +66,7 @@ int main() {
      */
     Sequence seq2 = Sequence("test2", "ACGT");
     seq.append(seq2);
-    if (not verifySequence(seq, "test", "AGTCTCGAAACGT")) {
+    if (!verifySequence(seq, "test", "AGTCTCGAAACGT")) {
         cerr << "[FAIL] append(const Sequence&)" << endl;
         ret = -1;
     }

@@ -67,7 +67,7 @@ int main() {
      * result : header="", seq="AGTCTCGAAACGTACGT"
      */
     Sequence seq3 = seq + seq2;
-    if (not verifySequence(seq3, "", "AGTCTCGAAACGTACGT")) {
+    if (!verifySequence(seq3, "", "AGTCTCGAAACGTACGT")) {
         cerr << "[FAIL] operator+ (const Sequence&, const Sequence&)" << endl;
         ret = -1;
     }
@@ -77,7 +77,7 @@ int main() {
      * result : header="adder", seq="ACGTTAGC"
      */
     Sequence seq4 = seq2 + "TAGC";
-    if (not verifySequence(seq4, "adder", "ACGTTAGC")) {
+    if (!verifySequence(seq4, "adder", "ACGTTAGC")) {
         cerr << "[FAIL] operator+ (const Sequence&, const std::string&)" << endl;
         ret = -1;
     }
@@ -88,7 +88,7 @@ int main() {
      */
     char tmp2[5] = "ATGC";
     Sequence seq5 = seq4 + tmp2;
-    if (not verifySequence(seq5, "adder", "ACGTTAGCATGC")) {
+    if (!verifySequence(seq5, "adder", "ACGTTAGCATGC")) {
         cerr << "[FAIL] operator+ (const Sequence&, const char *)" << endl;
         ret = -1;
     }
@@ -98,7 +98,7 @@ int main() {
      * result : header="adder", seq="ACGTTAGCATGCC"
      */
     Sequence seq6 = seq5 + 'C';
-    if (not verifySequence(seq6, "adder", "ACGTTAGCATGCC")) {
+    if (!verifySequence(seq6, "adder", "ACGTTAGCATGCC")) {
         cerr << "[FAIL] operator+ (const Sequence&, const char)" << endl;
         ret = -1;
     }
@@ -108,7 +108,7 @@ int main() {
      * result : header="adder", seq="TAGCACGT"
      */
     Sequence seq7 = "TAGC" + seq2;
-    if (not verifySequence(seq7, "adder", "TAGCACGT")) {
+    if (!verifySequence(seq7, "adder", "TAGCACGT")) {
         cerr << "[FAIL] operator+ (const std::string&, const Sequence&)" << endl;
         ret = -1;
     }
@@ -118,7 +118,7 @@ int main() {
      * result : header="adder", "ATGCTAGCACGT"
      */
     Sequence seq8 = tmp2 + seq7;
-    if (not verifySequence(seq8, "adder", "ATGCTAGCACGT")) {
+    if (!verifySequence(seq8, "adder", "ATGCTAGCACGT")) {
         cerr << "[FAIL] operator+ (const char *, const Sequence&)" << endl;
         ret = -1;
     }
@@ -128,7 +128,7 @@ int main() {
      * result : header="adder", "AATGCTAGCACGT"
      */
     Sequence seq9 = 'A' + seq8;
-    if (not verifySequence(seq9, "adder", "AATGCTAGCACGT")) {
+    if (!verifySequence(seq9, "adder", "AATGCTAGCACGT")) {
         cerr << "[FAIL] operator+ (const char, const Sequence&)" << endl;
         ret = -1;
     }
