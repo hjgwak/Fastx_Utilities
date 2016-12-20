@@ -17,7 +17,7 @@ void checkAnswer(const Sequence& obj, const string& header, const string& seq,
 		cerr << msg << endl;
 		cerr << "       result : header=" + obj.getHeader() + ", seq=" + obj.seq() << endl;
 		cerr << "       answer : header=" + header + ", seq=" + seq << endl;
-		ret -= 1;
+		*ret -= 1;
 	}
 }
 
