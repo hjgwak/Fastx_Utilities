@@ -43,10 +43,10 @@ public:
     virtual Sequence& operator+=(const char c);
     virtual Sequence& operator+=(const Sequence& sequence);
 
-    virtual Sequence operator+(const Sequence& rhs);
-    virtual Sequence operator+(const std::string& rhs);
-    virtual Sequence operator+(const char* rhs);
-    virtual Sequence operator+(const char rhs);
+    Sequence operator+(const Sequence& rhs);
+    Sequence operator+(const std::string& rhs);
+    Sequence operator+(const char* rhs);
+    Sequence operator+(const char rhs);
 protected:
     std::string header;
     std::string sequence;

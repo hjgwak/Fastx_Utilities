@@ -58,7 +58,7 @@ public:
     Fasta operator+ (const Sequence& rhs);
     Fasta operator+ (const std::string& rhs);
     Fasta operator+ (const char* rhs);
-    Fasta operator+ (const char rhs);
+	Fasta operator+ (const char rhs);
 private:
     /*
     bool charCheck();

@@ -173,6 +173,7 @@ Fasta Fasta::operator+ (const char rhs) {
     return *this;
 }
 
+
 Fasta operator+ (const Sequence& lhs, const Fasta& rhs) {
     Fasta new_fasta = Fasta(rhs);
 
