@@ -49,7 +49,7 @@ public:
     Sequence operator+(const char rhs);
 
 	bool operator==(const Sequence& rhs);
-
+	bool operator!=(const Sequence& rhs);
 protected:
     std::string header;
     std::string sequence;

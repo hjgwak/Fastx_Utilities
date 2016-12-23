@@ -175,6 +175,10 @@ bool Sequence::operator== (const Sequence& rhs) {
 	return (this->header == rhs.header) && (this->seq() == rhs.seq());
 }
 
+bool Sequence::operator!= (const Sequence& rhs) {
+	return !(*this == rhs);
+}
+
 Sequence operator+ (const std::string& lhs, const Sequence& rhs) {
     Sequence new_seq(rhs.getHeader(), lhs);
     new_seq += rhs;

@@ -129,5 +129,36 @@ int main() {
 	checkAnswer(seq9, "adder", "AATGCTAGCACGT",
 		"[FAIL] operator+ (const char, const Sequence&)", &ret);
 
+	/*
+	 * compare 2 same Sequence object,
+	 * name:seq, seq:AGTC
+	 * result : true
+	 */
+	Sequence l_seq("seq", "AGTC"), r_seq("seq", "AGTC");
+	if (l_seq != r_seq) {
+		cerr << "[FAIL] operator== (const Sequence&)" << endl;
+		cerr << "       cur: header=seq, sequence=AGTC" << endl;
+		cerr << "       ret: false" << endl;
+		cerr << "       ans: true" << endl;
+
+		ret -= 1;
+	}
+
+	/*
+	 * compare 2 different Sequence object
+	 * h_seq : header is different seq <-> seq1
+	 * s_seq : sequence is different AGTC <-> TCGA
+	 * result : false
+	 */
+	Sequence h_seq("seq1", "AGTV"), s_seq("seq", "TCGA");
+	if (l_seq == h_seq || l_seq == s_seq) {
+		cerr << "[FAIL] operator== (const Sequence&)" << endl;
+		cerr << "       diff: header= seq <-> seq1, sequence= AGTC <-> TCGA" << endl;
+		cerr << "       ret: true" << endl;
+		cerr << "       ans: false" << endl;
+
+		ret -= 1;
+	}
+
     return ret;
 }
