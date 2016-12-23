@@ -47,6 +47,9 @@ public:
     Sequence operator+(const std::string& rhs);
     Sequence operator+(const char* rhs);
     Sequence operator+(const char rhs);
+
+	bool operator==(const Sequence& rhs);
+
 protected:
     std::string header;
     std::string sequence;
